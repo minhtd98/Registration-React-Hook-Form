@@ -38,28 +38,42 @@ function App() {
   };
 
   return (
-    <div>
-      <p className={styles.title}>Edit User</p>
+    <div style={{width: '400px', margin: '0 auto', fontSize: '16px'}}>
+      <h1 style={{textAlign: 'center'}}>Edit User</h1>
 
-      <form className={styles.App} onSubmit={handleSubmit(onSubmit)}>
-        <input
-          placeholder="first-name"
-          type="text"
-          {...register("firstName")}
-          required
-        />
-        <input
-          placeholder="last-name"
-          type="text"
-          {...register("lastName")}
-          required
-        />
+      <form style={{display: 'flex', flexDirection: 'column', gap: '8px'}} onSubmit={handleSubmit(onSubmit)}>
+        <div style={{display: 'flex', flexDirection: 'column', gap: '4px'}}>
+          <label className={ styles.label }>First Name</label>
+          <input
+            style={{height: '36px', borderRadius: '6px', border: '1px solid gray', padding: '0px 6px'}}
+            placeholder="Michael"
+            type="text"
+            {...register("firstName")}
+            required
+          />
+        </div>
+        <div style={{display: 'flex', flexDirection: 'column', gap: '4px'}}>
+          <label className={styles.label}>Last Name</label>
+          <input
+            style={{height: '36px', borderRadius: '6px', border: '1px solid gray', padding: '0px 6px'}}
+            placeholder="Jackson"
+            type="text"
+            {...register("lastName")}
+            required
+          />
+        </div>
         {errors.email}
-        <input placeholder="role" type="text" {...register("role")} />
+        <div style={{display: 'flex', flexDirection: 'column', gap: '4px'}}>
+          <label className={styles.label}>Role</label>
+          <input
+            style={{height: '36px', borderRadius: '6px', border: '1px solid gray', padding: '0px 6px'}}
+            placeholder="Admin..."
+            type="text"
+            {...register("role")} />
+        </div>
         <input
-          value="submit"
-          type={"submit"}
-          style={{ backgroundColor: "#a1eafb" }}
+          type="submit"
+          style={{ backgroundColor: "#940f8f", borderRadius: '6px', height: '36px', border: 'none', color: 'white', fontSize: '16px'}}
         />
       </form>
     </div>
