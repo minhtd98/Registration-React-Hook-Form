@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
-function UserList() {
+function Users() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -77,4 +77,4 @@ function UserList() {
   );
 }
 
-export default UserList;
+export default Users;
