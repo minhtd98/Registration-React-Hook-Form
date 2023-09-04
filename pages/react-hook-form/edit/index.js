@@ -1,40 +1,46 @@
-import React from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
 import styles from "../style.module.css";
+import { API_URL } from '../../../utils/constants'
 
-function App() {
+function UserForm({user}) {
+  const router = useRouter()
+
+  const defaultValues = useMemo(() => ({
+    firstName: user ? user.firstName : '',
+    lastName: user ? user.lastName : '',
+    role: user ? user.role : ''
+  }), [user])
+
   const {
     register,
     handleSubmit,
-    formState: { errors },
-  } = useForm();
-
-  const router = useRouter();
-  const { id } = router.query; // Lấy id từ URL hiện tại
+    formState: { errors, defaultValues: state },
+  } = useForm({
+    defaultValues: defaultValues
+  });
 
   const onSubmit = async (data) => {
     try {
       const response = await fetch(
-        `https://64f5867d2b07270f705d538f.mockapi.io/users/${id}`,
+        `${API_URL}/${user.id}`,
         {
           method: "PUT",
           headers: {
-            "Content-Type": "application/json",
-          },
+            "Content-Type": "application/json", },
           body: JSON.stringify(data),
         }
       );
 
       if (response.ok) {
-        console.log("Successfully updated!");
+        router.push('/react-hook-form/users')
       } else {
         console.error("Error");
       }
     } catch (error) {
       console.error(error);
     }
-    router.push('/react-hook-form/users')
   };
 
   return (
@@ -80,4 +86,4 @@ function App() {
   );
 }
 
-export default App;
+export default UserForm;

@@ -42,7 +42,7 @@ function Users() {
                 {user.role}
               </td>
               <td>
-                <Link href={`/react-hook-form/edit/${user.id}`}>
+                <Link href={`/react-hook-form/users/${user.id}`}>
                   <button
                     style={{
                       backgroundColor: "#007bff",
@@ -52,7 +52,7 @@ function Users() {
                       borderRadius: "4px",
                     }}
                   >
-                    Edit
+                    View
                   </button>
                 </Link>
               </td>
