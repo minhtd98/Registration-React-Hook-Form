@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
-function UserList() {
+function Users() {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -42,7 +42,7 @@ function UserList() {
                 {user.role}
               </td>
               <td>
-                <Link href={`/react-hook-form/edit/${user.id}`}>
+                <Link href={`/react-hook-form/users/${user.id}`}>
                   <button
                     style={{
                       backgroundColor: "#007bff",
@@ -52,7 +52,7 @@ function UserList() {
                       borderRadius: "4px",
                     }}
                   >
-                    Edit
+                    View
                   </button>
                 </Link>
               </td>
@@ -77,4 +77,4 @@ function UserList() {
   );
 }
 
-export default UserList;
+export default Users;
